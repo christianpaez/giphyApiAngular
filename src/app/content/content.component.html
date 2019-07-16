@@ -6,52 +6,30 @@
         </div>
 	</div>
 	
-  <div class="row">
+  <div class="row" *ngIf="areGifsLoaded">
     <!-- Card 1 -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow bg-dark">
-        <img src="https://media0.giphy.com/media/d3YHRHw0U7B9Dqxy/200.gif?cid=3b4060945d2df7ca577a53726f9442ef&rid=200.gif" class="card-img-top" alt="...">
+    <div class="col-xl-3 col-md-6 mb-4" *ngFor= "let gif of gifData">
+      <div class="card border-0 shadow bg-dark" >
+        <img src={{gif.images.fixed_height.url}} class="card-img-top" alt="...">
         <div class="card-body text-center">
-          <h5 class="card-title mb-0">{{gifTitle}}</h5>
-          <div class="card-text text-50">{{gifTitle}}</div>
-        </div>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="col-xl-3 col-md-6 mb-4 h-300">
-      <div class="card border-0 shadow bg-dark">
-        <img src="https://media2.giphy.com/media/l1L2UkgpuiE4U/200.gif?cid=3b4060945d2df7ca577a53726f9442ef&rid=200.gif" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">{{gifTitle}}</h5>
-          <div class="card-text text-50">{{gifTitle}}</div>
-        </div>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow bg-dark">
-        <img src="https://media3.giphy.com/media/z7WDgVoPhLo7S/200.gif?cid=3b4060945d2df7ca577a53726f9442ef&rid=200.gif" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">{{gifTitle}}</h5>
-          <div class="card-text text-50">{{gifTitle}}</div>
-        </div>
-      </div>
-    </div>
-    <!-- Card 4 -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow bg-dark">
-        <img src="https://media3.giphy.com/media/RrX8uJ8eF7kiY/200.gif?cid=3b4060945d2df7ca577a53726f9442ef&rid=200.gif" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">{{gifTitle}}</h5>
-          <div class="card-text text-50">{{gifTitle}}</div>
+          <h5 class="card-title mb-0">{{gif.title}}</h5>
+          <div class="card-text text-50">
+              <a href= {{gif.url}}  target = "_blank">
+                <button class="btn  btn-sm btn-primary mt-4">See on giphy.com</button>
+              </a></div>
         </div>
       </div>
     </div>
   </div>
+
+  
+   
   <!-- /.row -->
   <div class ="row">
   	<div class="mx-auto my-auto">
-          <p class="mb-5 mt-3 text-dark">Powered By GIPHY</p>
+          <p class="mb-5 mt-3 text-dark text-center">Powered By GIPHY</p>
         </div> 	
-  </div>  
+  </div> 
+
+
 </div>

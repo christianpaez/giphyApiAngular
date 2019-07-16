@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { ContentComponent } from '../content/content.component'
-
-
-
+import { GiphyService } from '../giphy.service';
 
 
 @Component({
@@ -13,15 +11,28 @@ import { ContentComponent } from '../content/content.component'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private contentComponent: ContentComponent) { }
+  gifData = [];
+  userInput: string;
+
+  areGifsLoaded = false;
+  constructor(private contentComponent: ContentComponent,
+    private giphyService: GiphyService) { }
 
   ngOnInit() {
   }
 
 
-  formSubmit(){
-    this.contentComponent.showConfig();
-    
-
-  }
+ formSubmit(){
+   console.log(this.userInput)
+   if(this.userInput == undefined || !this.userInput.replace(/\s/g, '').length){
+     window.alert("Search field is empty")   
+    return;}
+    let input = this.userInput;
+    this.giphyService.getConfig(input)
+    .subscribe((data: any) => {
+      console.log(data)
+      this.gifData = data.data;          
+      this.areGifsLoaded = true;
+    })   
+  } 
 }

@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit {
   constructor(private contentComponent: ContentComponent,
     private giphyService: GiphyService) { }
 
+
+   
+
   ngOnInit() {
   }
 
@@ -33,6 +36,7 @@ export class HeaderComponent implements OnInit {
       console.log(data)
       this.gifData = data.data;          
       this.areGifsLoaded = true;
-    })   
+    }, error => console.log('oops', error)    
+    )   
   } 
 }

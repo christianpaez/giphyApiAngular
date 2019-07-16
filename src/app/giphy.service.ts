@@ -23,9 +23,6 @@ export class GiphyService {
     console.log(input)
     let apiUrl = this.baseUrl + this.apiKey + input + this.limit
     console.log(apiUrl)
-
-    return this.http.get(apiUrl);
+    return this.http.get(apiUrl)  
   }
-
-
 }

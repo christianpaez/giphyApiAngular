@@ -33,6 +33,9 @@ export class HeaderComponent implements OnInit {
     let input = this.userInput;
     this.giphyService.getConfig(input)
     .subscribe((data: any) => {
+      if(data.data.length === 0){
+        alert('Your search did not prompt any results, please try again')
+      }
       console.log(data)
       this.gifData = data.data;          
       this.areGifsLoaded = true;
